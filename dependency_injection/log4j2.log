@@ -1,0 +1,4 @@
+2024-04-12 00:12:12.810 [main] DEBUG org.springframework.context.support.ClassPathXmlApplicationContext - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@388526fb
+2024-04-12 00:12:12.996 [main] DEBUG org.springframework.beans.factory.xml.XmlBeanDefinitionReader - Loaded 2 bean definitions from class path resource [bean_circular_dependency.xml]
+2024-04-12 00:12:13.035 [main] DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory - Creating shared instance of singleton bean 'wifeBean'
+2024-04-12 00:12:13.092 [main] DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory - Creating shared instance of singleton bean 'husbandBean'

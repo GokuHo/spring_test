@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="department1" class="object.Department">
+        <property name="name" value="a" />
+    </bean>
+
+    <bean id="department2" class="object.Department">
+        <property name="name" value="b" />
+    </bean>
+
+    <bean id="department3" class="object.Department">
+        <property name="name" value="c" />
+    </bean>
+
+    <bean id="injectionTestBean" class="object.InjectionTest">
+        <property name="array_">
+            <array>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </array>
+        </property>
+
+        <property name="array2_">
+            <array>
+                <ref bean="department1" />
+                <ref bean="department2" />
+                <ref bean="department3" />
+            </array>
+        </property>
+
+        <property name="list_">
+            <list>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+            </list>
+        </property>
+
+        <property name="set_">
+            <set>
+                <value>aaa</value>
+                <value>bbb</value>
+                <value>ccc</value>
+                <value>ccc</value>
+            </set>
+        </property>
+
+        <property name="map_">
+            <map>
+<!--                <entry key-ref="refBean" value-ref="refBean" />-->
+                <entry key="k1" value="111" />
+                <entry key="k2" value="222" />
+                <entry key="k3" value="333" />
+            </map>
+        </property>
+
+        <property name="properties_">
+            <props>
+                <prop key="k1">value1</prop>
+                <prop key="k2">value2</prop>
+                <prop key="k3">value3</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

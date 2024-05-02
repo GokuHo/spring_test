@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    <bean id="userFactory" class="object.UserFactory" />-->
+<!--    <bean id="user" class="object.User" factory-bean="userFactory" factory-method="getObject" />-->
+
+    <bean id="userBean1" class="object.UserFactoryBean" />
+
+    <bean id="dateBean1" class="object.DateFactoryBean">
+        <constructor-arg index="0" value="2000-01-01" />
+    </bean>
+
+    <bean id="userBean2" class="object.User">
+        <property name="createDate" ref="dateBean1" />
+    </bean>
+
+</beans>

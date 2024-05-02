@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="INFO">
+
+    <!--    ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL < OFF-->
+
+    <properties>
+        <property name="all">logs/all</property>
+        <property name="info">logs/info</property>
+        <property name="warn">logs/warn</property>
+        <property name="error">logs/error</property>
+    </properties>
+
+    <appenders>
+
+        <console name="console" target="SYSTEM_OUT">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
+            <patternLayout pattern="%d{HH:mm:ss:SSS} %highlight{%-5level}{ERROR=Bright RED, WARN=Bright Yellow, INFO=Bright Green, DEBUG=Bright Cyan, TRACE=Bright White} %style{%t}{bright,magenta} %style{%c%M(%L)}{cyan}: %m%n"/>
+        </console>
+
+        <rollingFile name="allFile" fileName="${all}/log.log"
+                     filePattern="${all}/%d{yyyy-MM-dd}-%i.log">
+            <patternLayout pattern="%d{yyyy-MM-dd HH:mm:ss:SSS} %highlight{%-5level}{ERROR=Bright RED, WARN=Bright Yellow, INFO=Bright Green, DEBUG=Bright Cyan, TRACE=Bright White} %style{%t}{bright,magenta} %style{%c%M(%L)}{cyan}: %m%n"/>
+            <policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="1 MB"/>
+            </policies>
+        </rollingFile>
+
+        <rollingFile name="infoFile" fileName="${info}/log.log"
+                     filePattern="${info}/%d{yyyy-MM-dd}-%i.log">
+            <patternLayout pattern="%d{yyyy-MM-dd HH:mm:ss:SSS} %highlight{%-5level}{ERROR=Bright RED, WARN=Bright Yellow, INFO=Bright Green, DEBUG=Bright Cyan, TRACE=Bright White} %style{%t}{bright,magenta} %style{%c%M(%L)}{cyan}: %m%n"/>
+            <policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="1 MB"/>
+            </policies>
+
+            <filters>
+                <ThresholdFilter level="info" onMatch="accept" onMismatch="deny"/>
+                <ThresholdFilter level="warn" onMatch="deny" onMismatch="neutral"/>
+            </filters>
+        </rollingFile>
+
+        <rollingFile name="warnFile" fileName="${warn}/log.log"
+                     filePattern="${warn}/%d{yyyy-MM-dd}-%i.log">
+            <patternLayout pattern="%d{yyyy-MM-dd HH:mm:ss:SSS} %highlight{%-5level}{ERROR=Bright RED, WARN=Bright Yellow, INFO=Bright Green, DEBUG=Bright Cyan, TRACE=Bright White} %style{%t}{bright,magenta} %style{%c%M(%L)}{cyan}: %m%n"/>
+            <policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="1 MB"/>
+            </policies>
+
+            <filters>
+                <ThresholdFilter level="warn" onMatch="accept" onMismatch="deny"/>
+                <ThresholdFilter level="error" onMatch="deny" onMismatch="neutral"/>
+            </filters>
+        </rollingFile>
+
+        <rollingFile name="errorFile" fileName="${error}/log.log"
+                     filePattern="${error}/%d{yyyy-MM-dd}-%i.log">
+            <patternLayout pattern="%d{yyyy-MM-dd HH:mm:ss:SSS} %highlight{%-5level}{ERROR=Bright RED, WARN=Bright Yellow, INFO=Bright Green, DEBUG=Bright Cyan, TRACE=Bright White} %style{%t}{bright,magenta} %style{%c%M(%L)}{cyan}: %m%n"/>
+            <policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="1 MB"/>
+            </policies>
+
+            <filters>
+                <ThresholdFilter level="error" onMatch="accept"/>
+            </filters>
+        </rollingFile>
+    </appenders>
+
+    <loggers>
+        <Root level="INFO">
+            <AppenderRef ref="console" />
+            <!--            <AppenderRef ref="allFile" />-->
+            <!--            <AppenderRef ref="infoFile" />-->
+            <!--            <AppenderRef ref="warnFile" />-->
+            <!--            <AppenderRef ref="errorFile" />-->
+        </Root>
+    </loggers>
+</configuration>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dateBean" class="java.util.Date" />
+
+    <bean id="userBean1" class="object.User" p:username="aaa" p:password="bbb" p:age="12" p:createDate-ref="dateBean" />
+
+    <bean id="userBean2" class="object.User" c:_0="aaa" c:_1="bbb" c:_2="12" />
+<!--    <bean id="userBean2" class="object.User" c:username="aaa" c:password="bbb" c:age="12" />-->
+
+</beans>

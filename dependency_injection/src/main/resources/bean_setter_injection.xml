@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userImplBean" class="dao.impl.UserImpl" />
+    <bean id="user2ImplBean" class="dao.impl.User2Impl" />
+
+    <bean id="userServiceBean" class="service.UserServiceSetterInjection">
+        <property name="userImpl" ref="userImplBean" />
+        <property name="user2Impl" ref="user2ImplBean" />
+    </bean>
+
+
+
+
+    <bean id="userBean" class="object.User">
+        <property name="username" value="abc" />
+        <property name="password" value="123" />
+        <property name="age" value="12" />
+    </bean>
+
+
+
+
+    <bean id="departmentBean" class="object.Department">
+        <property name="name" value="IT" />
+    </bean>
+    <bean id="employeeBean" class="object.Employee">
+        <property name="name" value="abc" />
+        <property name="age" value="12" />
+        <property name="department" ref="departmentBean" />
+    </bean>
+
+</beans>
